@@ -58,7 +58,7 @@ def createNut(coor):
     return {'d':path, 'style':simplestyle.formatStyle(style)}
 
 def createHeader(coor):
-    textstyle = {'font-size': '16',
+    textstyle = {'font-size': '24',
         'font-family': 'Linux Libertine O',
         'text-anchor': 'middle',
         'fill': '#000000'}
@@ -245,7 +245,6 @@ class SVGGuitarChord(inkex.Effect):
 
         # Coordinates of upper left corner   
         ul = self.view_center
-#        ul = (40, 60)
         
         # Coordinates of capo, if applicable
         ulc = list(ul)
