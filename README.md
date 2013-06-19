@@ -1,4 +1,4 @@
 Inkex_svgGuitarChord
 ====================
 
-Inkscape extension for drawing custom guitar chords
+Inkscape extension for rendering custom guitar chords
