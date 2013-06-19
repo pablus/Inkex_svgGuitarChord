@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <_name>Guitar chord</_name>
+    <id>guitar.chord</id>
+    <dependency type="executable" location="extensions">svgGuitarChord.py</dependency>
+   <dependency type="executable" location="extensions">inkex.py</dependency>
+  <param name="tab" type="notebook">
+	 <page name="tab" _gui-text="Positions">
+	 <param name="1st" type="description">First string</param>
+ <param name="firstStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+     <item value="x">Mute</item>
+     <item value="0">Open</item>
+     <item value="1">1</item>
+     <item value="2">2</item>
+     <item value="3">3</item>
+     <item value="4">4</item>
+     <item value="5">5</item>
+ </param> <param name="firstStringFinger" type="enum" _gui-text="Use finger:                                      ">
+ <item value="x">NA/Don't care</item>
+ <item value="T">T</item>
+ <item value="1">1</item>
+ <item value="2">2</item>
+ <item value="3">3</item>
+ <item value="4">4</item>
+ </param>
+	 <_param name="2nd" type="description">Second string</_param>
+   <param name="secondStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+    <item value="x">Mute</item>
+    <item value="0">Open</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+		<item value="5">5</item>
+	 </param>
+   <param name="secondStringFinger" type="enum" _gui-text="Use finger:                                      ">
+    <item value="x">NA/Don't care</item>
+    <item value="T">T</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+   </param>
+	 <_param name="3th" type="description">Third string</_param>
+   <param name="thirdStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+    <item value="x">Mute</item>
+    <item value="0">Open</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+		<item value="5">5</item>
+	 </param>
+   <param name="thirdStringFinger" type="enum" _gui-text="Use finger:                                      ">
+    <item value="x">NA/Don't care</item>
+    <item value="T">T</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+   </param>
+	 <_param name="4th" type="description">Fourth string</_param>
+   <param name="fourthStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+    <item value="x">Mute</item>
+    <item value="0">Open</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+		<item value="5">5</item>
+	 </param>
+   <param name="fourthStringFinger" type="enum" _gui-text="Use finger:                                      ">
+    <item value="x">NA/Don't care</item>
+    <item value="T">T</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+   </param>
+	 <_param name="5th" type="description">Fifth string</_param>
+   <param name="fifthStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+    <item value="x">Mute</item>
+    <item value="0">Open</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+		<item value="5">5</item>
+	 </param>
+   <param name="fifthStringFinger" type="enum" _gui-text="Use finger:                                      ">
+    <item value="x">NA/Don't care</item>
+    <item value="T">T</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+   </param>
+	 <_param name="6th" type="description">Sixth string</_param>
+   <param name="sixthStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+    <item value="x">Mute</item>
+    <item value="0">Open</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+		<item value="5">5</item>
+	 </param>
+   <param name="sixthStringFinger" type="enum" _gui-text="Use finger:                                      ">
+    <item value="x">NA/Don't care</item>
+    <item value="T">T</item>
+		<item value="1">1</item>
+		<item value="2">2</item>
+		<item value="3">3</item>
+		<item value="4">4</item>
+   </param>
+   </page>
+   <page name="tab" _gui-text="Options">
+	 <param name="headerTrue" type="boolean" _gui-text="Show header">true</param>
+	 <param name="header" type="string" _gui-text="Header">Em</param>
+	 <param name="nFrets" type="int" min="3" max="5" _gui-text="Show grid with this number of frets">4</param>
+	 <param name="firstFret" type="int" min="1" max="16" _gui-text="First fret">1</param>
+	 <param name="leftFingerNumberTrue" type="boolean" _gui-text="Show left hand finger numbers">false</param>
+     <param name="capoPos" type="enum" _gui-text="Use capo? / Put it at fret:                                            ">
+        <item value="No">No</item>
+        <item value="1">1</item>
+        <item value="2">2</item>
+        <item value="3">3</item>
+        <item value="4">4</item>
+        <item value="5">5</item>
+        <item value="6">6</item>
+        <item value="7">7</item>
+        <item value="8">8</item>
+        <item value="9">9</item>
+        <item value="10">10</item>
+     </param>
+	 <param name="tuningTrue" type="boolean" _gui-text="Show tuning">false</param>
+	 <param name="tuning" type="string" _gui-text="Tuning">E-A-D-G-B-E</param>
+	 <param name="perStringCommentsTrue" type="boolean" _gui-text="Show Comments per string">false</param>
+	 <param name="perStringComments" type="string" _gui-text="Comments per string">R-5-R-3-5-R</param>
+	 </page>
+   </param>
+	
+	  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu _name="Render"/>
+    </effects-menu>
+  </effect>
+   <script>
+     <command reldir="extensions" interpreter="python">svgGuitarChord.py</command>
+   </script>
+</inkscape-extension>
