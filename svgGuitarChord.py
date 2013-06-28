@@ -58,11 +58,7 @@ def createNut(coor):
     return {'d':path, 'style':simplestyle.formatStyle(style)}
 
 def createHeader(coor):
-<<<<<<< HEAD
     textstyle = {'font-size': '18',
-=======
-    textstyle = {'font-size': '24',
->>>>>>> 9da2f61cac477db69ac120e422694fe8859018a5
         'font-family': 'Linux Libertine O',
         'text-anchor': 'middle',
         'fill': '#000000'}
