@@ -327,7 +327,7 @@ class SVGGuitarChord(inkex.Effect):
         frets = []
         for n in range(len(nStringFret)):
             frets.append(nStringFret[n][1])
-        if (max(frets) + 1) > self.options.nFrets:
+        if len(frets) > 0 and (max(frets) + 1) > self.options.nFrets:
             self.options.nFrets = max(frets) + 1 
 
         # Create list with muted strings
