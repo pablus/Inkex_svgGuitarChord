@@ -2,7 +2,9 @@
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
 <name>Guitar chord</name>
 <id>guitar.chord</id>
-<dependency type="executable" location="inx">svgGuitarChord.py</dependency>
+<script>
+    <command location="inx" interpreter="python">svgGuitarChord.py</command>
+</script>
     <param name="tab" type="notebook">
     <page name="tab" gui-text="Positions">
 
@@ -152,7 +154,4 @@
         <submenu name="Render"/>
     </effects-menu>
 </effect>
-<script>
-    <command reldir="extensions" interpreter="python">svgGuitarChord.py</command>
-</script>
 </inkscape-extension>
