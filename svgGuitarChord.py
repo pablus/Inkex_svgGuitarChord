@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*- 
 '''
 svgGuitarChord.py
@@ -23,8 +23,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 __version__ = "1.0"
 
-import inkex, simplestyle
-
+import inkex
+from lxml import etree
 
 def createGrid(rf, coor):
     style = {'color':'#000000', 'fill':'none', 'stroke':'#000000', 
@@ -49,20 +49,20 @@ def createGrid(rf, coor):
         'M ' + str(coor[0]) + ',' + str(coor[1]) + ' v 160 '\
         'm 18,-160 v 160 m 18,-160 v 160 m 18,-160 v 160'\
         'm 18,-160 v 160 m 18,-160 v 160 '
-    return {'d':path, 'style':simplestyle.formatStyle(style)}
+    return {'d':path, 'style':str(inkex.Style(style))}
 
 def createNut(coor):
     style = {'color':'#000000', 'fill':'none', 'stroke':'#000000', 
             'stroke-width':'3.2', 'stroke-linecap':'round'}
     path = 'M ' + str(coor[0]) + ',' + str(coor[1]) + ' h 90 '
-    return {'d':path, 'style':simplestyle.formatStyle(style)}
+    return {'d':path, 'style':str(inkex.Style(style))}
 
 def createHeader(coor):
     textstyle = {'font-size': '18',
         'font-family': 'Libertinus Serif',
         'text-anchor': 'middle',
         'fill': '#000000'}
-    return { 'style':simplestyle.formatStyle(textstyle),
+    return { 'style':str(inkex.Style(textstyle)),
     'x': str(coor[0]), 'y': str(coor[1]) }
 
 def createTuning(coor):
@@ -72,7 +72,7 @@ def createTuning(coor):
         'fill': '#000000'}
     tu = []
     for n in range(6):
-        tu.append({'style':simplestyle.formatStyle(textstyle),
+        tu.append({'style':str(inkex.Style(textstyle)),
         'x': str(coor[n][0]), 'y': str(coor[n][1])})
     return tu
 
@@ -95,16 +95,14 @@ def createPerStringComments(rf, coor):
         'fill': '#000000'}
     ps = []
     for n in range(6):
-        ps.append({'style':simplestyle.formatStyle(textstyle),
+        ps.append({'style':str(inkex.Style(textstyle)),
         'x': str(cps[n][0]), 'y': str(cps[n][1])})
     return ps
 
 def createFirstFret(coor):
-    textstyle = {'font-size': '8',
-        'font-family': 'Latin Modern Roman',
-        'text-anchor': 'end',
-        'fill': '#000000'}
-    return { 'style':simplestyle.formatStyle(textstyle),
+    textstyle = {'font-size': '8', 'font-family': 'Latin Modern Roman',
+            'font-weight':'bold', 'text-anchor':'end', 'fill': '#000000'}
+    return {'style':str(inkex.Style(textstyle)),
     'x': str(coor[0]-7), 'y': str(coor[1]+28) }
 
 def Fret2text(ff):
@@ -117,14 +115,12 @@ def createCapo2(coor):
             'stroke-width':'1.6', 'stroke-linecap':'round'}
     path = 'M ' + str(coor[0]) + ',' + str(coor[1]) + ' v 4 '\
         'm 18,-4 v 4 m 18,-4 v 4 m 18,-4 v 4 m 18,-4 v 4 m 18,-4 v 4'
-    return {'d':path, 'style':simplestyle.formatStyle(style)}
+    return {'d':path, 'style':str(inkex.Style(style))}
 
 def createCapoPos(coor):
-    textstyle = {'font-size': '8',
-        'font-family': 'Latin Modern Roman',
-        'text-anchor': 'end',
-        'fill': '#000000'}
-    return { 'style':simplestyle.formatStyle(textstyle),
+    textstyle = {'font-size': '8', 'font-family': 'Latin Modern Roman',
+            'font-weight':'bold', 'text-anchor':'end', 'fill': '#000000'}
+    return { 'style':str(inkex.Style(textstyle)),
     'x': str(coor[0]-5), 'y': str(coor[1]+4) }
 
 def createXAt(xp, coor):
@@ -133,28 +129,26 @@ def createXAt(xp, coor):
     path = 'M '+ str(coor[xp][0]) + ',' +  str(coor[xp][1]) + ' m 4,4 '\
     'l -8,-8 M '+ str(coor[xp][0]) + ',' +  str(coor[xp][1]) + ''\
     'm -4,4 l 8,-8'
-    return {'d':path, 'style':simplestyle.formatStyle(style)}
+    return {'d':path, 'style':str(inkex.Style(style))}
 
 def create0At(op, coor):
     style = {'color':'#000000', 'fill':'none', 'stroke':'#000000', 
             'stroke-width':'1.1', 'stroke-linecap':'round'}
     path = 'M '+ str(coor[op][0]) + ',' +  str(coor[op][1]) + ' m -4,0 '\
     'a 4,4 0 1, 0 8 0 a 4,4 0 1, 0 -8 0'
-    return {'d':path, 'style':simplestyle.formatStyle(style)}
+    return {'d':path, 'style':str(inkex.Style(style))}
 
 def createStringPressedAt(fp, coor):
     style = {'color':'#000000', 'fill':'#000000'}
     path = 'M '+ str(coor[fp[0]][fp[1]][0]) + ','\
     + str(coor[fp[0]][fp[1]][1]) + ' m -6,0 '\
     'a 6,6 0 1, 0 12 0 a 6,6 0 1, 0 -12 0'
-    return {'d':path, 'style':simplestyle.formatStyle(style)}
+    return {'d':path, 'style':str(inkex.Style(style))}
 
 def leftFingerNumberAt(fp, coor):
-    textstyle = {'font-size': '8',
-        'font-family': 'Latin Modern Roman',
-        'text-anchor': 'start',
-        'fill': '#000000'}
-    return { 'style':simplestyle.formatStyle(textstyle),
+    textstyle = {'font-size': '8', 'font-family': 'Latin Modern Roman',
+            'font-weight':'bold', 'text-anchor':'start', 'fill': '#000000'}
+    return { 'style':str(inkex.Style(textstyle)),
     'x': str(coor[fp[0]][fp[1]][0]), 'y': str(coor[fp[0]][fp[1]][1]) }
 
 def createBarreAt(bp, coor):
@@ -164,41 +158,39 @@ def createBarreAt(bp, coor):
         + str(coor[bp[0]][bp[1]][1]) + 'L'\
         + str(coor[bp[2]][bp[3]][0]) + ','\
         + str(coor[bp[2]][bp[3]][1])
-    return {'d':path, 'style':simplestyle.formatStyle(style)}
-
+    return {'d':path, 'style':str(inkex.Style(style))}
 
 class SVGGuitarChord(inkex.Effect):
-        
     def __init__(self):
         inkex.Effect.__init__(self)
-        self.arg_parser.add_argument("--tab", type=string, dest="tab")
+        self.arg_parser.add_argument("--tab", type=str, dest="tab")
         self.arg_parser.add_argument("--headerTrue", type=inkex.Boolean, default="True", dest="headerTrue")
-        self.arg_parser.add_argument("--header", type=string, default="Em", dest="header")
+        self.arg_parser.add_argument("--header", type=str, default="Em", dest="header")
         self.arg_parser.add_argument("--nFrets", type=int, dest="nFrets", default=4)
         self.arg_parser.add_argument("--firstFret", type=int, dest="firstFret", default=1)
-        self.arg_parser.add_argument("--capoPos", type=string, default="No", dest="capoPos")
-        self.arg_parser.add_argument("--tuningTrue", type="inkex.Boolean", default="False", dest="tuningTrue")
-        self.arg_parser.add_argument("--tuning", type=string, default='E-A-D-G-B-E', dest="tuning")
+        self.arg_parser.add_argument("--capoPos", type=str, default="No", dest="capoPos")
+        self.arg_parser.add_argument("--tuningTrue", type=inkex.Boolean, default="False", dest="tuningTrue")
+        self.arg_parser.add_argument("--tuning", type=str, default='E-A-D-G-B-E', dest="tuning")
         self.arg_parser.add_argument("--perStringCommentsTrue", type=inkex.Boolean, default="False", dest="perStringCommentsTrue")
-        self.arg_parser.add_argument("--perStringComments", type=string, default='R-5-R-3-5-R', dest="perStringComments")
+        self.arg_parser.add_argument("--perStringComments", type=str, default='R-5-R-3-5-R', dest="perStringComments")
         self.arg_parser.add_argument("--leftFingerNumberTrue", type=inkex.Boolean, default="True", dest="leftFingerNumberTrue")
-        self.arg_parser.add_argument("--firstStringFret", type=string, default='x', dest="firstStringFret")
-        self.arg_parser.add_argument("--firstStringFinger", type=string, default='x', dest="firstStringFinger")
-        self.arg_parser.add_argument("--secondStringFret", type=string, default='x', dest="secondStringFret")
-        self.arg_parser.add_argument("--secondStringFinger", type=string, default='x', dest="secondStringFinger")
-        self.arg_parser.add_argument("--thirdStringFret", type=string, default='x', dest="thirdStringFret")
-        self.arg_parser.add_argument("--thirdStringFinger", type=string, default='x', dest="thirdStringFinger")
-        self.arg_parser.add_argument("--fourthStringFret", type=string, default='x', dest="fourthStringFret")
-        self.arg_parser.add_argument("--fourthStringFinger", type=string, default='x', dest="fourthStringFinger")
-        self.arg_parser.add_argument("--fifthStringFret", type=string, default='x', dest="fifthStringFret")
-        self.arg_parser.add_argument("--fifthStringFinger", type=string, default='x', dest="fifthStringFinger")
-        self.arg_parser.add_argument("--sixthStringFret", type=string, default='x', dest="sixthStringFret")
-        self.arg_parser.add_argument("--sixthStringFinger", type=string, default='x', dest="sixthStringFinger")
+        self.arg_parser.add_argument("--firstStringFret", type=str, default='x', dest="firstStringFret")
+        self.arg_parser.add_argument("--firstStringFinger", type=str, default='x', dest="firstStringFinger")
+        self.arg_parser.add_argument("--secondStringFret", type=str, default='x', dest="secondStringFret")
+        self.arg_parser.add_argument("--secondStringFinger", type=str, default='x', dest="secondStringFinger")
+        self.arg_parser.add_argument("--thirdStringFret", type=str, default='x', dest="thirdStringFret")
+        self.arg_parser.add_argument("--thirdStringFinger", type=str, default='x', dest="thirdStringFinger")
+        self.arg_parser.add_argument("--fourthStringFret", type=str, default='x', dest="fourthStringFret")
+        self.arg_parser.add_argument("--fourthStringFinger", type=str, default='x', dest="fourthStringFinger")
+        self.arg_parser.add_argument("--fifthStringFret", type=str, default='x', dest="fifthStringFret")
+        self.arg_parser.add_argument("--fifthStringFinger", type=str, default='x', dest="fifthStringFinger")
+        self.arg_parser.add_argument("--sixthStringFret", type=str, default='x', dest="sixthStringFret")
+        self.arg_parser.add_argument("--sixthStringFinger", type=str, default='x', dest="sixthStringFinger")
 
     def effect(self):
 
         # Coordinates of upper left corner   
-        ul = self.view_center
+        ul = self.svg.namedview.center
         
         # Coordinates of capo, if applicable
         ulc = list(ul)
@@ -309,9 +301,9 @@ class SVGGuitarChord(inkex.Effect):
                         fretBarre.append(int(fretFinger[n]['fret'])-1)
                         fretBarre.append(int(fretFinger[m]['fret'])-1)
                         break
-        zipped = zip(stringBarre, fretBarre)
+        zipped = list(zip(stringBarre, fretBarre))
         barres = []
-        for n in xrange(0, len(stringBarre)-1, 2):
+        for n in range(0, len(stringBarre)-1, 2):
             barres.append(zipped[n] + zipped[n+1])
 
         # Tuning
@@ -325,13 +317,13 @@ class SVGGuitarChord(inkex.Effect):
 
         ## Create Grid
         attribs_grid = createGrid(self.options.nFrets, ul)
-        inkex.etree.SubElement(self.current_layer,
+        etree.SubElement(self.svg.get_current_layer(),
             inkex.addNS('path','svg'), attribs_grid)
 
         ## Create Nut
         if self.options.firstFret==1 and self.options.capoPos == 'No':
             attribs_nut = createNut(ul)
-            inkex.etree.SubElement(self.current_layer,
+            etree.SubElement(self.svg.get_current_layer(),
                 inkex.addNS('path','svg'), attribs_nut)
 
         ## Create first fret indication
@@ -339,14 +331,14 @@ class SVGGuitarChord(inkex.Effect):
             or (self.options.firstFret > capoPos2 + 1\
             and self.options.capoPos != 'No'):
             attribs_firstFret = createFirstFret(ul) 
-            textFirstFret = inkex.etree.SubElement(self.current_layer,
+            textFirstFret = etree.SubElement(self.svg.get_current_layer(),
                 'text', attribs_firstFret)
             textFirstFret.text = Fret2text(self.options.firstFret)
 
         ## Create capo indication
         if self.options.capoPos != 'No':
             attribs_capoPos = createCapoPos(ulc) 
-            textCapoPos = inkex.etree.SubElement(self.current_layer,
+            textCapoPos = etree.SubElement(self.svg.get_current_layer(),
                 'text', attribs_capoPos)
             textCapoPos.text = 'C ' + Fret2text(capoPos2)
 
@@ -354,16 +346,16 @@ class SVGGuitarChord(inkex.Effect):
         if self.options.capoPos != 'No' and\
                 not (self.options.firstFret > capoPos2 + 1):
             attribs_capo1 = createNut(ulc)
-            inkex.etree.SubElement(self.current_layer,
+            etree.SubElement(self.svg.get_current_layer(),
                 inkex.addNS('path','svg'), attribs_capo1)
             attribs_capo2 = createCapo2(ulc)
-            inkex.etree.SubElement(self.current_layer,
+            etree.SubElement(self.svg.get_current_layer(),
                 inkex.addNS('path','svg'), attribs_capo2)
 
         ## Create Header
         if self.options.headerTrue:
             attribs_header = createHeader(ch)
-            textHeader = inkex.etree.SubElement(self.current_layer,
+            textHeader = etree.SubElement(self.svg.get_current_layer(),
                 'text', attribs_header)
             textHeader.text = self.options.header
 
@@ -374,7 +366,7 @@ class SVGGuitarChord(inkex.Effect):
                 for n in range(6):
                     tuning[n]
                 for n in range(6):
-                    textTuning = inkex.etree.SubElement(self.current_layer,
+                    textTuning = etree.SubElement(self.svg.get_current_layer(),
                         'text', attribs_tuning[n])
                     textTuning.text = tuning[n]
             except IndexError: 
@@ -388,7 +380,7 @@ class SVGGuitarChord(inkex.Effect):
                 for n in range(6):
                     perStringComments[n]
                 for n in range(6):
-                    textTuning = inkex.etree.SubElement(self.current_layer,
+                    textTuning = etree.SubElement(self.svg.get_current_layer(),
                         'text', attribs_psComments[n])
                     textTuning.text = perStringComments[n]
             except IndexError: 
@@ -399,7 +391,7 @@ class SVGGuitarChord(inkex.Effect):
         # Create string pressed 
         for n in range(len(nStringFret)):
             attribs_stringPressed = createStringPressedAt(nStringFret[n], pfp)
-            inkex.etree.SubElement(self.current_layer,
+            etree.SubElement(self.svg.get_current_layer(),
                 inkex.addNS('path','svg'), attribs_stringPressed)
 
         # Create left finger number
@@ -407,29 +399,29 @@ class SVGGuitarChord(inkex.Effect):
             if self.options.leftFingerNumberTrue and\
             fretFinger[nStringFret[n][0]]['finger']!='x':
                 attribs_leftFinger = leftFingerNumberAt(nStringFret[n], pfn)
-                textLeftFinger = inkex.etree.SubElement(self.current_layer,
+                textLeftFinger = etree.SubElement(self.svg.get_current_layer(),
                     'text', attribs_leftFinger)
                 textLeftFinger.text = fretFinger[nStringFret[n][0]]['finger']
 
         ## Create X (muted string)
         for n in range(len(nStringX)):
             attribs_x = createXAt(nStringX[n], xAnd0) 
-            inkex.etree.SubElement(self.current_layer,
+            etree.SubElement(self.svg.get_current_layer(),
                 inkex.addNS('path','svg'), attribs_x)
 
         ## Create O (open string)
         for n in range(len(nString0)):
             attribs_o = create0At(nString0[n], xAnd0) 
-            inkex.etree.SubElement(self.current_layer,
+            etree.SubElement(self.svg.get_current_layer(),
                 inkex.addNS('path','svg'), attribs_o)
 
         ## Create barre
         if len(barres) != 0:
             for n in range(len(barres)):
                 attribs_barre = createBarreAt(barres[n], pfp)
-                inkex.etree.SubElement(self.current_layer,
+                etree.SubElement(self.svg.get_current_layer(),
                     inkex.addNS('path','svg'), attribs_barre)
 
 if __name__ == '__main__':  
     e = SVGGuitarChord()
-    e.affect()
+    e.run()

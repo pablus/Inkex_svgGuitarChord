@@ -5,131 +5,148 @@
 <script>
     <command location="inx" interpreter="python">svgGuitarChord.py</command>
 </script>
-    <param name="tab" type="notebook">
-    <page name="tab" gui-text="Positions">
+<param name="tab" type="notebook">
+<page name="tab" gui-text="Positions">
+    <hbox>
+        <label appearance="header">6th string</label>
+        <param name="sixthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:">
+            <item value="x">M</item>
+            <item value="0">O</item>
+            <item value="1">1</item>
+            <item value="2">2</item>
+            <item value="3">3</item>
+            <item value="4">4</item>
+            <item value="5">5</item>
+        </param>
+        <spacer /> 
+        <param name="sixthStringFinger" type="optiongroup" appearance="combo" gui-text="Finger:">
+            <item value="x">NA/DC</item>
+            <item value="T">T</item>
+            <item value="1">1</item>
+            <item value="2">2</item>
+            <item value="3">3</item>
+            <item value="4">4</item>
+        </param>
+    </hbox>
 
-        <label appearance="header">Sixth string</label>
-        <param name="sixthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
-            <item value="x">Mute</item>
-            <item value="0">Open</item>
+    <hbox>
+        <label appearance="header">5th string</label>
+        <param name="fifthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:">
+            <item value="x">M</item>
+            <item value="0">O</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="sixthStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
-            <item value="x">NA/Don't care</item>
+        <spacer /> 
+        <param name="fifthStringFinger" type="optiongroup" appearance="combo" gui-text="Finger:">
+            <item value="x">NA/DC</item>
             <item value="T">T</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
         </param>
+    </hbox>
 
-        <label appearance="header">Fifth string</label>
-        <param name="fifthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
-            <item value="x">Mute</item>
-            <item value="0">Open</item>
+    <hbox>
+        <label appearance="header">4th string</label>
+        <param name="fourthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:">
+            <item value="x">M</item>
+            <item value="0">O</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="fifthStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
-            <item value="x">NA/Don't care</item>
+        <spacer /> 
+        <param name="fourthStringFinger" type="optiongroup" appearance="combo" gui-text="Finger:">
+            <item value="x">NA/DC</item>
             <item value="T">T</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
         </param>
+    </hbox>
 
-        <label appearance="header">Fourth string</label>
-        <param name="fourthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
-            <item value="x">Mute</item>
-            <item value="0">Open</item>
+    <hbox>
+        <label appearance="header">3rd string</label>
+        <param name="thirdStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:">
+            <item value="x">M</item>
+            <item value="0">O</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="fourthStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
-            <item value="x">NA/Don't care</item>
+        <spacer /> 
+        <param name="thirdStringFinger" type="optiongroup" appearance="combo" gui-text="Finger:">
+            <item value="x">NA/DC</item>
             <item value="T">T</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
         </param>
+    </hbox>
 
-        <label appearance="header">Third string</label>
-        <param name="thirdStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
-            <item value="x">Mute</item>
-            <item value="0">Open</item>
+    <hbox>
+        <label appearance="header">2nd string</label>
+        <param name="secondStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:">
+            <item value="x">M</item>
+            <item value="0">O</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="thirdStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
-            <item value="x">NA/Don't care</item>
+        <spacer /> 
+        <param name="secondStringFinger" type="optiongroup" appearance="combo" gui-text="Finger:">
+            <item value="x">NA/DC</item>
             <item value="T">T</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
         </param>
+    </hbox>
 
-        <label appearance="header">Second string</label>
-        <param name="secondStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
-            <item value="x">Mute</item>
-            <item value="0">Open</item>
+    <hbox>
+        <label appearance="header">1st string</label>
+        <param name="firstStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:">
+            <item value="x">M</item>
+            <item value="0">O</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="secondStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
-            <item value="x">NA/Don't care</item>
+        <spacer /> 
+        <param name="firstStringFinger" type="optiongroup" appearance="combo" gui-text="Finger:">
+            <item value="x">NA/DC</item>
             <item value="T">T</item>
             <item value="1">1</item>
             <item value="2">2</item>
             <item value="3">3</item>
             <item value="4">4</item>
         </param>
-    
-        <label appearance="header">First string</label>
-        <param name="firstStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
-            <item value="x">Mute</item>
-            <item value="0">Open</item>
-            <item value="1">1</item>
-            <item value="2">2</item>
-            <item value="3">3</item>
-            <item value="4">4</item>
-            <item value="5">5</item>
-        </param>
-        <param name="firstStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
-            <item value="x">NA/Don't care</item>
-            <item value="T">T</item>
-            <item value="1">1</item>
-            <item value="2">2</item>
-            <item value="3">3</item>
-            <item value="4">4</item>
-        </param>
+    </hbox>
     
     </page>
     <page name="tab" gui-text="Options">
     <param name="headerTrue" type="bool" gui-text="Show header">true</param>
     <param name="header" type="string" gui-text="Header">Em</param>
-    <param name="nFrets" type="int" min="3" max="5" gui-text="Show grid with this number of frets">4</param>
-    <param name="firstFret" type="int" min="1" max="16" gui-text="First fret">1</param>
+    <param name="nFrets" type="int" min="3" max="5" gui-text="Show grid with this number of frets:">4</param>
+    <param name="firstFret" type="int" min="1" max="16" gui-text="First fret:">1</param>
     <param name="leftFingerNumberTrue" type="bool" gui-text="Show left hand finger numbers">false</param>
-    <param name="capoPos" type="optiongroup" appearance="combo" gui-text="Use capo? / Put it at fret:                                            ">
+    <param name="capoPos" type="optiongroup" appearance="combo" gui-text="Use capo? / Put it at this fret:">
         <item value="No">No</item>
         <item value="1">1</item>
         <item value="2">2</item>
