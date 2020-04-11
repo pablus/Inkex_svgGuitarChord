@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*- 
 '''
 svgGuitarChord.py
@@ -59,7 +59,7 @@ def createNut(coor):
 
 def createHeader(coor):
     textstyle = {'font-size': '18',
-        'font-family': 'Linux Libertine O',
+        'font-family': 'Libertinus Serif',
         'text-anchor': 'middle',
         'fill': '#000000'}
     return { 'style':simplestyle.formatStyle(textstyle),
@@ -67,7 +67,7 @@ def createHeader(coor):
 
 def createTuning(coor):
     textstyle = {'font-size': '8',
-        'font-family': 'Linux Libertine O',
+        'font-family': 'Libertinus Serif',
         'text-anchor': 'middle',
         'fill': '#000000'}
     tu = []
@@ -90,7 +90,7 @@ def createPerStringComments(rf, coor):
             [coor[0]+54, coor[1]+172], [coor[0]+36, coor[1]+172],
             [coor[0]+18, coor[1]+172], [coor[0], coor[1]+172]]
     textstyle = {'font-size': '10',
-        'font-family': 'Linux Libertine O',
+        'font-family': 'Libertinus Serif',
         'text-anchor': 'middle',
         'fill': '#000000'}
     ps = []
@@ -101,7 +101,7 @@ def createPerStringComments(rf, coor):
 
 def createFirstFret(coor):
     textstyle = {'font-size': '8',
-        'font-family': 'Century Schoolbook L',
+        'font-family': 'Latin Modern Roman',
         'text-anchor': 'end',
         'fill': '#000000'}
     return { 'style':simplestyle.formatStyle(textstyle),
@@ -121,7 +121,7 @@ def createCapo2(coor):
 
 def createCapoPos(coor):
     textstyle = {'font-size': '8',
-        'font-family': 'Century Schoolbook L',
+        'font-family': 'Latin Modern Roman',
         'text-anchor': 'end',
         'fill': '#000000'}
     return { 'style':simplestyle.formatStyle(textstyle),
@@ -151,7 +151,7 @@ def createStringPressedAt(fp, coor):
 
 def leftFingerNumberAt(fp, coor):
     textstyle = {'font-size': '8',
-        'font-family': 'Century Schoolbook L',
+        'font-family': 'Latin Modern Roman',
         'text-anchor': 'start',
         'fill': '#000000'}
     return { 'style':simplestyle.formatStyle(textstyle),
@@ -171,75 +171,29 @@ class SVGGuitarChord(inkex.Effect):
         
     def __init__(self):
         inkex.Effect.__init__(self)
-        self.OptionParser.add_option("--tab",
-            action="store", type="string",
-            dest="tab")
-        self.OptionParser.add_option("--headerTrue",
-            action="store", type="inkbool", default="True",
-            dest="headerTrue")
-        self.OptionParser.add_option("--header",
-            action="store", type="string", default="Em",
-            dest="header")
-        self.OptionParser.add_option("--nFrets",
-            action="store", type="int",
-            dest="nFrets", default=4)
-        self.OptionParser.add_option("--firstFret",
-            action="store", type="int",
-            dest="firstFret", default=1)
-        self.OptionParser.add_option("--capoPos",
-            action="store", type="string", default="No",
-            dest="capoPos")
-        self.OptionParser.add_option("--tuningTrue",
-            action="store", type="inkbool", default="False",
-            dest="tuningTrue")
-        self.OptionParser.add_option("--tuning",
-            action="store", type="string", default='E-A-D-G-B-E',
-            dest="tuning")
-        self.OptionParser.add_option("--perStringCommentsTrue",
-            action="store", type="inkbool", default="False",
-            dest="perStringCommentsTrue")
-        self.OptionParser.add_option("--perStringComments",
-            action="store", type="string", default='R-5-R-3-5-R',
-            dest="perStringComments")
-        self.OptionParser.add_option("--leftFingerNumberTrue",
-            action="store", type="inkbool", default="True",
-            dest="leftFingerNumberTrue")
-        self.OptionParser.add_option("--firstStringFret",
-            action="store", type="string", default='x',
-            dest="firstStringFret")
-        self.OptionParser.add_option("--firstStringFinger",
-            action="store", type="string", default='x',
-            dest="firstStringFinger")
-        self.OptionParser.add_option("--secondStringFret",
-            action="store", type="string", default='x',
-            dest="secondStringFret")
-        self.OptionParser.add_option("--secondStringFinger",
-            action="store", type="string", default='x',
-            dest="secondStringFinger")
-        self.OptionParser.add_option("--thirdStringFret",
-            action="store", type="string", default='x',
-            dest="thirdStringFret")
-        self.OptionParser.add_option("--thirdStringFinger",
-            action="store", type="string", default='x',
-            dest="thirdStringFinger")
-        self.OptionParser.add_option("--fourthStringFret",
-            action="store", type="string", default='x',
-            dest="fourthStringFret")
-        self.OptionParser.add_option("--fourthStringFinger",
-            action="store", type="string", default='x',
-            dest="fourthStringFinger")
-        self.OptionParser.add_option("--fifthStringFret",
-            action="store", type="string", default='x',
-            dest="fifthStringFret")
-        self.OptionParser.add_option("--fifthStringFinger",
-            action="store", type="string", default='x',
-            dest="fifthStringFinger")
-        self.OptionParser.add_option("--sixthStringFret",
-            action="store", type="string", default='x',
-            dest="sixthStringFret")
-        self.OptionParser.add_option("--sixthStringFinger",
-            action="store", type="string", default='x',
-            dest="sixthStringFinger")
+        self.arg_parser.add_argument("--tab", type=string, dest="tab")
+        self.arg_parser.add_argument("--headerTrue", type=inkex.Boolean, default="True", dest="headerTrue")
+        self.arg_parser.add_argument("--header", type=string, default="Em", dest="header")
+        self.arg_parser.add_argument("--nFrets", type=int, dest="nFrets", default=4)
+        self.arg_parser.add_argument("--firstFret", type=int, dest="firstFret", default=1)
+        self.arg_parser.add_argument("--capoPos", type=string, default="No", dest="capoPos")
+        self.arg_parser.add_argument("--tuningTrue", type="inkex.Boolean", default="False", dest="tuningTrue")
+        self.arg_parser.add_argument("--tuning", type=string, default='E-A-D-G-B-E', dest="tuning")
+        self.arg_parser.add_argument("--perStringCommentsTrue", type=inkex.Boolean, default="False", dest="perStringCommentsTrue")
+        self.arg_parser.add_argument("--perStringComments", type=string, default='R-5-R-3-5-R', dest="perStringComments")
+        self.arg_parser.add_argument("--leftFingerNumberTrue", type=inkex.Boolean, default="True", dest="leftFingerNumberTrue")
+        self.arg_parser.add_argument("--firstStringFret", type=string, default='x', dest="firstStringFret")
+        self.arg_parser.add_argument("--firstStringFinger", type=string, default='x', dest="firstStringFinger")
+        self.arg_parser.add_argument("--secondStringFret", type=string, default='x', dest="secondStringFret")
+        self.arg_parser.add_argument("--secondStringFinger", type=string, default='x', dest="secondStringFinger")
+        self.arg_parser.add_argument("--thirdStringFret", type=string, default='x', dest="thirdStringFret")
+        self.arg_parser.add_argument("--thirdStringFinger", type=string, default='x', dest="thirdStringFinger")
+        self.arg_parser.add_argument("--fourthStringFret", type=string, default='x', dest="fourthStringFret")
+        self.arg_parser.add_argument("--fourthStringFinger", type=string, default='x', dest="fourthStringFinger")
+        self.arg_parser.add_argument("--fifthStringFret", type=string, default='x', dest="fifthStringFret")
+        self.arg_parser.add_argument("--fifthStringFinger", type=string, default='x', dest="fifthStringFinger")
+        self.arg_parser.add_argument("--sixthStringFret", type=string, default='x', dest="sixthStringFret")
+        self.arg_parser.add_argument("--sixthStringFinger", type=string, default='x', dest="sixthStringFinger")
 
     def effect(self):
 

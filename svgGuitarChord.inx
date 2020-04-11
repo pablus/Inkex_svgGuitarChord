@@ -1,15 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
-<_name>Guitar chord</_name>
+<name>Guitar chord</name>
 <id>guitar.chord</id>
-<dependency type="executable" location="extensions">svgGuitarChord.py</dependency>
-<dependency type="executable" location="extensions">inkex.py</dependency>
-
+<dependency type="executable" location="inx">svgGuitarChord.py</dependency>
     <param name="tab" type="notebook">
-    <page name="tab" _gui-text="Positions">
+    <page name="tab" gui-text="Positions">
 
-        <_param name="6th" type="description">Sixth string</_param>
-        <param name="sixthStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+        <label appearance="header">Sixth string</label>
+        <param name="sixthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
             <item value="x">Mute</item>
             <item value="0">Open</item>
             <item value="1">1</item>
@@ -18,7 +16,7 @@
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="sixthStringFinger" type="enum" _gui-text="Use finger:                                      ">
+        <param name="sixthStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
             <item value="x">NA/Don't care</item>
             <item value="T">T</item>
             <item value="1">1</item>
@@ -27,8 +25,8 @@
             <item value="4">4</item>
         </param>
 
-        <_param name="5th" type="description">Fifth string</_param>
-        <param name="fifthStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+        <label appearance="header">Fifth string</label>
+        <param name="fifthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
             <item value="x">Mute</item>
             <item value="0">Open</item>
             <item value="1">1</item>
@@ -37,7 +35,7 @@
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="fifthStringFinger" type="enum" _gui-text="Use finger:                                      ">
+        <param name="fifthStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
             <item value="x">NA/Don't care</item>
             <item value="T">T</item>
             <item value="1">1</item>
@@ -46,8 +44,8 @@
             <item value="4">4</item>
         </param>
 
-        <_param name="4th" type="description">Fourth string</_param>
-        <param name="fourthStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+        <label appearance="header">Fourth string</label>
+        <param name="fourthStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
             <item value="x">Mute</item>
             <item value="0">Open</item>
             <item value="1">1</item>
@@ -56,7 +54,7 @@
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="fourthStringFinger" type="enum" _gui-text="Use finger:                                      ">
+        <param name="fourthStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
             <item value="x">NA/Don't care</item>
             <item value="T">T</item>
             <item value="1">1</item>
@@ -65,8 +63,8 @@
             <item value="4">4</item>
         </param>
 
-        <_param name="3th" type="description">Third string</_param>
-        <param name="thirdStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+        <label appearance="header">Third string</label>
+        <param name="thirdStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
             <item value="x">Mute</item>
             <item value="0">Open</item>
             <item value="1">1</item>
@@ -75,7 +73,7 @@
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="thirdStringFinger" type="enum" _gui-text="Use finger:                                      ">
+        <param name="thirdStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
             <item value="x">NA/Don't care</item>
             <item value="T">T</item>
             <item value="1">1</item>
@@ -84,8 +82,8 @@
             <item value="4">4</item>
         </param>
 
-        <_param name="2nd" type="description">Second string</_param>
-        <param name="secondStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+        <label appearance="header">Second string</label>
+        <param name="secondStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
             <item value="x">Mute</item>
             <item value="0">Open</item>
             <item value="1">1</item>
@@ -94,7 +92,7 @@
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="secondStringFinger" type="enum" _gui-text="Use finger:                                      ">
+        <param name="secondStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
             <item value="x">NA/Don't care</item>
             <item value="T">T</item>
             <item value="1">1</item>
@@ -103,8 +101,8 @@
             <item value="4">4</item>
         </param>
     
-        <param name="1st" type="description">First string</param>
-        <param name="firstStringFret" type="enum" _gui-text="Mute/Open/Fret:                        ">
+        <label appearance="header">First string</label>
+        <param name="firstStringFret" type="optiongroup" appearance="combo" gui-text="Mute/Open/Fret:                        ">
             <item value="x">Mute</item>
             <item value="0">Open</item>
             <item value="1">1</item>
@@ -113,7 +111,7 @@
             <item value="4">4</item>
             <item value="5">5</item>
         </param>
-        <param name="firstStringFinger" type="enum" _gui-text="Use finger:                                      ">
+        <param name="firstStringFinger" type="optiongroup" appearance="combo" gui-text="Use finger:                                      ">
             <item value="x">NA/Don't care</item>
             <item value="T">T</item>
             <item value="1">1</item>
@@ -123,13 +121,13 @@
         </param>
     
     </page>
-    <page name="tab" _gui-text="Options">
-    <param name="headerTrue" type="boolean" _gui-text="Show header">true</param>
-    <param name="header" type="string" _gui-text="Header">Em</param>
-    <param name="nFrets" type="int" min="3" max="5" _gui-text="Show grid with this number of frets">4</param>
-    <param name="firstFret" type="int" min="1" max="16" _gui-text="First fret">1</param>
-    <param name="leftFingerNumberTrue" type="boolean" _gui-text="Show left hand finger numbers">false</param>
-    <param name="capoPos" type="enum" _gui-text="Use capo? / Put it at fret:                                            ">
+    <page name="tab" gui-text="Options">
+    <param name="headerTrue" type="bool" gui-text="Show header">true</param>
+    <param name="header" type="string" gui-text="Header">Em</param>
+    <param name="nFrets" type="int" min="3" max="5" gui-text="Show grid with this number of frets">4</param>
+    <param name="firstFret" type="int" min="1" max="16" gui-text="First fret">1</param>
+    <param name="leftFingerNumberTrue" type="bool" gui-text="Show left hand finger numbers">false</param>
+    <param name="capoPos" type="optiongroup" appearance="combo" gui-text="Use capo? / Put it at fret:                                            ">
         <item value="No">No</item>
         <item value="1">1</item>
         <item value="2">2</item>
@@ -142,16 +140,16 @@
         <item value="9">9</item>
         <item value="10">10</item>
     </param>
-    <param name="tuningTrue" type="boolean" _gui-text="Show tuning">false</param>
-    <param name="tuning" type="string" _gui-text="Tuning">E-A-D-G-B-E</param>
-    <param name="perStringCommentsTrue" type="boolean" _gui-text="Show Comments per string">false</param>
-    <param name="perStringComments" type="string" _gui-text="Comments per string">R-5-R-3-5-R</param>
+    <param name="tuningTrue" type="bool" gui-text="Show tuning">false</param>
+    <param name="tuning" type="string" gui-text="Tuning">E-A-D-G-B-E</param>
+    <param name="perStringCommentsTrue" type="bool" gui-text="Show Comments per string">false</param>
+    <param name="perStringComments" type="string" gui-text="Comments per string">R-5-R-3-5-R</param>
     </page>
     </param>
 <effect>
     <object-type>all</object-type>
     <effects-menu>
-        <submenu _name="Render"/>
+        <submenu name="Render"/>
     </effects-menu>
 </effect>
 <script>
